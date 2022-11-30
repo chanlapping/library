@@ -56,5 +56,30 @@ addBookToLibrary(station11);
 addBookToLibrary(starShip);
 
 const container = document.querySelector("#container");
+const newBtn = document.querySelector("#newBtn");
+const modal = document.querySelector(".modal");
+const formBtn = document.querySelector("#formBtn");
+const titleInput = document.querySelector("#title");
+const authorInput = document.querySelector("#author");
+const pagesInput = document.querySelector("#pages");
+const finishedInput = document.querySelector("#finished");
+
+newBtn.addEventListener("click", () => {
+    modal.style.display = "flex";
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+formBtn.addEventListener("click", () => {
+    let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, finishedInput.checked);
+    addBookToLibrary(newBook);
+    let card = createBookCard(newBook);
+    container.appendChild(card);
+    modal.style.display = "none";
+});
 
 displayBooks();
