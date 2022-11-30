@@ -5,16 +5,21 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
 
-    this.info = function () {
-        let infoStr = this.title + " by " + this.author + ", " + this.pages + " pages, ";
-        if (this.read) {
-            infoStr += "have already read.";
-        }
-        else {
-            infoStr += "not read yet.";
-        }
+Book.prototype.info = function () {
+    let infoStr = this.title + " by " + this.author + ", " + this.pages + " pages, ";
+    if (this.read) {
+        infoStr += "have already read.";
     }
+    else {
+        infoStr += "not read yet.";
+    }
+    return infoStr;
+}
+
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
 }
 
 function addBookToLibrary(book) {
@@ -39,11 +44,19 @@ function createBookCard(book) {
         myLibrary.splice(card.dataset.index, 1);
         card.remove();
     });
+    const readBtn = document.createElement("button");
+    readBtn.textContent = "Read";
+    readBtn.addEventListener('click', () => {
+        book.toggleRead();
+        read.textContent = book.read ? "finished" : "not yet finished";
+    })
+
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(read);
     card.appendChild(removeBtn);
+    card.appendChild(readBtn);
 
     return card;
 }
