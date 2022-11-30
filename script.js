@@ -24,6 +24,7 @@ function addBookToLibrary(book) {
 function createBookCard(book) {
     const card = document.createElement("div");
     card.classList.add("card");
+    card.setAttribute("data-index", myLibrary.length - 1);
     const title = document.createElement("h2");
     title.textContent = book.title;
     const author = document.createElement("p");
@@ -32,10 +33,17 @@ function createBookCard(book) {
     pages.textContent = book.pages + " pages";
     const read = document.createElement("p");
     read.textContent = book.read ? "finished" : "not yet finished";
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove Book";
+    removeBtn.addEventListener("click", (e) => {
+        myLibrary.splice(card.dataset.index, 1);
+        card.remove();
+    });
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(read);
+    card.appendChild(removeBtn);
 
     return card;
 }
@@ -47,13 +55,13 @@ function displayBooks() {
     }
 }
 
-const snowCrash = new Book("Snow Crash", "Neal Stephenson", 576, false);
-const station11 = new Book("Station Eleven", "Emily St. John Mandel", 352, false);
-const starShip = new Book("Starship Troopers", "Robert A. Heinlein", 352, true);
+// const snowCrash = new Book("Snow Crash", "Neal Stephenson", 576, false);
+// const station11 = new Book("Station Eleven", "Emily St. John Mandel", 352, false);
+// const starShip = new Book("Starship Troopers", "Robert A. Heinlein", 352, true);
 
-addBookToLibrary(snowCrash);
-addBookToLibrary(station11);
-addBookToLibrary(starShip);
+// addBookToLibrary(snowCrash);
+// addBookToLibrary(station11);
+// addBookToLibrary(starShip);
 
 const container = document.querySelector("#container");
 const newBtn = document.querySelector("#newBtn");
