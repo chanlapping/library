@@ -38,6 +38,8 @@ function createBookCard(book) {
     pages.textContent = book.pages + " pages";
     const read = document.createElement("p");
     read.textContent = book.read ? "finished" : "not yet finished";
+    const btnContainer = document.createElement("p");
+    btnContainer.classList.add("btn-container");
     const removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove Book";
     removeBtn.addEventListener("click", (e) => {
@@ -55,8 +57,9 @@ function createBookCard(book) {
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(read);
-    card.appendChild(removeBtn);
-    card.appendChild(readBtn);
+    btnContainer.appendChild(removeBtn);
+    btnContainer.appendChild(readBtn);
+    card.appendChild(btnContainer);
 
     return card;
 }
@@ -68,17 +71,10 @@ function displayBooks() {
     }
 }
 
-// const snowCrash = new Book("Snow Crash", "Neal Stephenson", 576, false);
-// const station11 = new Book("Station Eleven", "Emily St. John Mandel", 352, false);
-// const starShip = new Book("Starship Troopers", "Robert A. Heinlein", 352, true);
-
-// addBookToLibrary(snowCrash);
-// addBookToLibrary(station11);
-// addBookToLibrary(starShip);
-
 const container = document.querySelector("#container");
 const newBtn = document.querySelector("#newBtn");
 const modal = document.querySelector(".modal");
+const form = document.querySelector(".modal form");
 const formBtn = document.querySelector("#formBtn");
 const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
@@ -101,6 +97,5 @@ formBtn.addEventListener("click", () => {
     let card = createBookCard(newBook);
     container.appendChild(card);
     modal.style.display = "none";
+    form.reset();
 });
-
-displayBooks();

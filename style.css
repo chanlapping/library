@@ -1,18 +1,40 @@
+:root {
+    --dark1: #2D033B;
+    --dark2: #810CA8;
+    --light1: #C147E9;
+    --light2: #E5B8F4;
+}
+
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--dark1);
+    color: var(--light2);
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
 }
 
 #container {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    padding: 2rem;
+    width: 1500px;
 }
 
 .card {
     border: 1px solid black;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 2rem;
     width: 400px;
+    background-color: var(--dark2);
+}
+
+.card h2 {
+    font-size: 30px;
+    margin: 0;
 }
 
 .modal {
@@ -29,7 +51,8 @@ body {
 
 .modal form {
     max-width: 500px;
-    background-color: #fff;
+    background-color: var(--dark2);
+    color: var(--light2);
     padding: 1rem;
 }
 
@@ -45,8 +68,28 @@ body {
     width: 1rem;
 }
 
+.btn-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 5rem;
+}
+
 button {
     padding: 0.5rem;
     font-size: 100%;
     font-family: inherit;
+    font-weight: bold;
+    background-color: var(--light2);
+    color: var(--dark2);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#newBtn {
+    position: fixed;
+    bottom: 4rem;
+    right: 4rem;
+    font-size: 200%;
+    padding: 1rem;
 }
