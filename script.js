@@ -1,25 +1,29 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+class Book {
 
-Book.prototype.info = function () {
-    let infoStr = this.title + " by " + this.author + ", " + this.pages + " pages, ";
-    if (this.read) {
-        infoStr += "have already read.";
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
-    else {
-        infoStr += "not read yet.";
-    }
-    return infoStr;
-}
 
-Book.prototype.toggleRead = function() {
-    this.read = !this.read;
+    info() {
+        let infoStr = this.title + " by " + this.author + ", " + this.pages + " pages, ";
+        if (this.read) {
+            infoStr += "have already read.";
+        }
+        else {
+            infoStr += "not read yet.";
+        }
+        return infoStr;
+    }
+
+    toggleRead() {
+        this.read = !this.read;
+    }
+
 }
 
 function addBookToLibrary(book) {
