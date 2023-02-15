@@ -27,15 +27,27 @@ h1 {
 .card {
     border: 1px solid black;
     border-radius: 8px;
-    padding: 2rem;
-    width: 400px;
+    padding: 1rem;
+    width: 300px;
     background-color: var(--dark2);
 }
 
 .card h2 {
-    font-size: 30px;
-    margin: 0;
+    font-size: 25px;
+    margin: 0 0 2rem 0; 
 }
+
+.card button {
+    display: inline-block;
+    width: 90px;
+}
+
+.card p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
 
 .modal {
     display: none;
@@ -68,10 +80,10 @@ h1 {
     width: 1rem;
 }
 
-.btn-container {
+.card .btn-container {
     display: flex;
-    gap: 2rem;
-    margin-top: 5rem;
+    gap: 0.5rem;
+    margin-top: 2rem;
 }
 
 button {

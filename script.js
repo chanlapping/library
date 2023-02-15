@@ -41,17 +41,17 @@ function createBookCard(book) {
     const pages = document.createElement("p");
     pages.textContent = book.pages + " pages";
     const read = document.createElement("p");
-    read.textContent = book.read ? "finished" : "not yet finished";
+    read.textContent = book.read ? "finished" : "not finished";
     const btnContainer = document.createElement("p");
     btnContainer.classList.add("btn-container");
     const removeBtn = document.createElement("button");
-    removeBtn.textContent = "Remove Book";
+    removeBtn.textContent = "Delete";
     removeBtn.addEventListener("click", (e) => {
         myLibrary.splice(card.dataset.index, 1);
         card.remove();
     });
     const readBtn = document.createElement("button");
-    readBtn.textContent = "Read";
+    readBtn.textContent = "Finished";
     readBtn.addEventListener('click', () => {
         book.toggleRead();
         read.textContent = book.read ? "finished" : "not yet finished";
@@ -95,7 +95,8 @@ window.addEventListener("click", (e) => {
     }
 });
 
-formBtn.addEventListener("click", () => {
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
     let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, finishedInput.checked);
     addBookToLibrary(newBook);
     let card = createBookCard(newBook);
